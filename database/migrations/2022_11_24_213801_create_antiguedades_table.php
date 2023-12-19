@@ -14,7 +14,7 @@ class CreateAntiguedadesTable extends Migration
     public function up()
     {
         Schema::create('antiguedades', function (Blueprint $table) {
-            $table->smallIncrements('id');
+            $table->smallIncrements('seq_antiguedad');
             $table->string('nom_antiguedad', 20);
             $table->boolean('visible')->default(false);
         });

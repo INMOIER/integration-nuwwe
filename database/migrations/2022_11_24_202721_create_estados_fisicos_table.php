@@ -14,12 +14,12 @@ class CreateEstadosFisicosTable extends Migration
     public function up()
     {
         Schema::create('estados_fisicos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_estado_fisico');
             $table->string('cod_estado_fisico', 3)->unique();
             $table->string('nom_estado_fisico', 15);
-            $table->string('activo', 1)->default('S');
+            $table->boolean('activo')->default(true);
             $table->boolean('visible')->default(true);
-            $table->index('cod_estado_fisico');
+            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

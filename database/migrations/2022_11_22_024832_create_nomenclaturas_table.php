@@ -14,13 +14,12 @@ class CreateNomenclaturasTable extends Migration
     public function up()
     {
         Schema::create('nomenclaturas', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('seq_nomenclatura')->unique();
+            $table->unsignedInteger('seq_nomenclatura')->primary();
             $table->string('nom_nomenclatura', 50);
             $table->string('cod_nomenclatura', 10)->nullable();
-            $table->string('activo', 1)->default('S');
+            $table->boolean('activo')->default(true);
             $table->boolean('visible')->default(false);
-            $table->index('seq_nomenclatura');
+            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

@@ -14,13 +14,13 @@ class CreateEstadosInmueblesTable extends Migration
     public function up()
     {
         Schema::create('estados_inmuebles', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_estado');
             $table->string('cod_estado', 3)->unique();
             $table->string('nom_estado', 15);
             $table->string('color_estado', 7)->nullable();
-            $table->string('activo', 1)->default('S');
+            $table->boolean('activo')->default(true);
             $table->boolean('visible')->default(true);
-            $table->index('cod_estado');
+            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

@@ -14,12 +14,12 @@ class CreateServiciosPublicosTable extends Migration
     public function up()
     {
         Schema::create('servicios_publicos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_servicio');
             $table->string('cod_servicio', 3)->unique();
             $table->string('nom_servicio', 15);
-            $table->string('activo', 1)->default('S');
+            $table->boolean('activo')->default(true);
             $table->boolean('visible')->default(true);
-            $table->index('cod_servicio');
+            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

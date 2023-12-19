@@ -14,15 +14,15 @@ class CreateInmuebleServicioComunTable extends Migration
     public function up()
     {
         Schema::create('inmueble_servicio_comun', function (Blueprint $table) {
-            $table->id();
-            $table->string('seq_inmueble_servicio_comun', 12)->unique()->nullable();
-            $table->string('cod_servicio_comun', 3);
-            $table->string('cod_inmueble', 10);
+            $table->unsignedBigInteger('seq_inmueble_servicio_comun')->primary();
+            $table->unsignedInteger('seq_servicio_comun');
+            $table->unsignedBigInteger('cod_inmueble');
             $table->string('vlr_servicio_comun', 30);
             $table->string('obs_servicio_comun')->nullable();
-            $table->foreign('cod_servicio_comun')->references('cod_servicio_comun')->on('servicios_comunes');
+            $table->timestamp('fecha_ult_modificacion');
+            $table->foreign('seq_servicio_comun')->references('seq_servicio_comun')->on('servicios_comunes');
             $table->foreign('cod_inmueble')->references('cod_inmueble')->on('inmuebles');
-            $table->unique(['cod_servicio_comun', 'cod_inmueble']);
+            $table->unique(['seq_servicio_comun', 'cod_inmueble']);
         });
     }
 

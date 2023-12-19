@@ -14,13 +14,13 @@ class CreateCiudadesTable extends Migration
     public function up()
     {
         Schema::create('ciudades', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_ciudad');
             $table->string('cod_ciudad', 6)->unique();
             $table->string('nom_ciudad', 40);
-            $table->string('cod_departamento', 3);
-            $table->string('activo', 1)->default('S');
+            $table->unsignedInteger('seq_departamento');
+            $table->boolean('activo')->default(true);
             $table->index('cod_ciudad');
-            $table->foreign('cod_departamento')->references('cod_departamento')->on('departamentos');
+            $table->foreign('seq_departamento')->references('seq_departamento')->on('departamentos');
         });
     }
 

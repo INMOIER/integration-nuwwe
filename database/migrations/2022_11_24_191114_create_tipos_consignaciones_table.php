@@ -14,12 +14,12 @@ class CreateTiposConsignacionesTable extends Migration
     public function up()
     {
         Schema::create('tipos_consignaciones', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_tipo_consignacion');
             $table->string('cod_tipo_consignacion', 3)->unique();
             $table->string('nom_tipo_consignacion', 50);
-            $table->string('activo', 1)->default('S');
+            $table->boolean('activo')->default(true);
             $table->boolean('visible')->default(false);
-            $table->index('cod_tipo_consignacion');
+            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

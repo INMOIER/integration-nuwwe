@@ -14,8 +14,7 @@ class CreateInmueblesTable extends Migration
     public function up()
     {
         Schema::create('inmuebles', function (Blueprint $table) {
-            $table->id();
-            $table->string('cod_inmueble', 10)->unique()->nullable();
+            $table->unsignedBigInteger('cod_inmueble')->primary();
             $table->integer('vlr_administracion')->nullable();
             $table->integer('vlr_canon')->nullable();
             $table->integer('vlr_fianza')->nullable();
@@ -33,26 +32,27 @@ class CreateInmueblesTable extends Migration
             $table->longText('dir_inmueble')->nullable();
             $table->integer('vlr_canon_2022')->nullable();
             $table->unsignedBigInteger('precio_venta_2022')->nullable();
+            $table->timestamp('fecha_ult_modificacion');
 
             // Campos foráneos
-            $table->string('cod_barrio', 6)->nullable();
-            $table->string('cod_ciudad', 6);
-            $table->string('cod_destino', 3);
-            $table->string('cod_estado', 3)->nullable();
-            $table->string('cod_estado_fisico', 3)->nullable();
-            $table->string('cod_estrato', 3);
-            $table->string('cod_tipo_consignacion', 3)->nullable();
-            $table->string('cod_tipo_inmueble', 3);
+            $table->unsignedInteger('seq_barrio')->nullable();
+            $table->unsignedInteger('seq_ciudad');
+            $table->unsignedInteger('seq_destino');
+            $table->unsignedInteger('seq_estado')->nullable();
+            $table->unsignedInteger('seq_estado_fisico')->nullable();
+            $table->unsignedInteger('seq_estrato');
+            $table->unsignedInteger('seq_tipo_consignacion')->nullable();
+            $table->unsignedInteger('seq_tipo_inmueble');
 
             // Foráneas
-            $table->foreign('cod_barrio')->references('cod_barrio')->on('barrios');
-            $table->foreign('cod_ciudad')->references('cod_ciudad')->on('ciudades');
-            $table->foreign('cod_destino')->references('cod_destino')->on('destinos_inmuebles');
-            $table->foreign('cod_estado')->references('cod_estado')->on('estados_inmuebles');
-            $table->foreign('cod_estado_fisico')->references('cod_estado_fisico')->on('estados_fisicos');
-            $table->foreign('cod_estrato')->references('cod_estrato')->on('estratos');
-            $table->foreign('cod_tipo_consignacion')->references('cod_tipo_consignacion')->on('tipos_consignaciones');
-            $table->foreign('cod_tipo_inmueble')->references('cod_tipo_inmueble')->on('tipos_inmuebles');
+            $table->foreign('seq_barrio')->references('seq_barrio')->on('barrios');
+            $table->foreign('seq_ciudad')->references('seq_ciudad')->on('ciudades');
+            $table->foreign('seq_destino')->references('seq_destino')->on('destinos_inmuebles');
+            $table->foreign('seq_estado')->references('seq_estado')->on('estados_inmuebles');
+            $table->foreign('seq_estado_fisico')->references('seq_estado_fisico')->on('estados_fisicos');
+            $table->foreign('seq_estrato')->references('seq_estrato')->on('estratos');
+            $table->foreign('seq_tipo_consignacion')->references('seq_tipo_consignacion')->on('tipos_consignaciones');
+            $table->foreign('seq_tipo_inmueble')->references('seq_tipo_inmueble')->on('tipos_inmuebles');
         });
     }
 

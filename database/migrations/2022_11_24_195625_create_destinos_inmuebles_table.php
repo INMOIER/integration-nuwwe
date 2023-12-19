@@ -14,12 +14,12 @@ class CreateDestinosInmueblesTable extends Migration
     public function up()
     {
         Schema::create('destinos_inmuebles', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_destino');
             $table->string('cod_destino', 3)->unique();
             $table->string('nom_destino', 15);
-            $table->string('activo', 1)->default('S');
+            $table->boolean('activo')->default(true);
             $table->boolean('visible')->default(true);
-            $table->index('cod_destino');
+            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

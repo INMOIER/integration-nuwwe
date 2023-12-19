@@ -14,14 +14,14 @@ class CreateInmuebleServicioPublicoTable extends Migration
     public function up()
     {
         Schema::create('inmueble_servicio_publico', function (Blueprint $table) {
-            $table->id();
-            $table->string('seq_inmueble_serv_pub', 12)->unique()->nullable();
-            $table->string('cod_servicio', 3);
-            $table->string('cod_inmueble', 10);
+            $table->unsignedBigInteger('seq_inmueble_serv_pub')->primary();
+            $table->unsignedInteger('seq_servicio');
+            $table->unsignedBigInteger('cod_inmueble');
             $table->string('obs')->nullable();
-            $table->foreign('cod_servicio')->references('cod_servicio')->on('servicios_publicos');
+            $table->timestamp('fecha_ult_modificacion');
+            $table->foreign('seq_servicio')->references('seq_servicio')->on('servicios_publicos');
             $table->foreign('cod_inmueble')->references('cod_inmueble')->on('inmuebles');
-            $table->unique(['cod_servicio', 'cod_inmueble']);
+            $table->unique(['seq_servicio', 'cod_inmueble']);
         });
     }
 

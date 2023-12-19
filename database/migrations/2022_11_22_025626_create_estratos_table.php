@@ -14,12 +14,12 @@ class CreateEstratosTable extends Migration
     public function up()
     {
         Schema::create('estratos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_estrato');
             $table->string('cod_estrato', 3)->unique();
             $table->string('nom_estrato', 15);
-            $table->string('activo', 1)->default('S');
+            $table->boolean('activo')->default(true);
             $table->boolean('visible')->default(true);
-            $table->index('cod_estrato');
+            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

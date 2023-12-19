@@ -14,12 +14,12 @@ class CreateTiposInmueblesTable extends Migration
     public function up()
     {
         Schema::create('tipos_inmuebles', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_tipo_inmueble');
             $table->string('cod_tipo_inmueble', 3)->unique();
             $table->string('nom_tipo_inmueble', 20);
-            $table->string('activo', 1)->default('S');
+            $table->boolean('activo')->default(true);
             $table->boolean('visible')->default(false);
-            $table->index('cod_tipo_inmueble');
+            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

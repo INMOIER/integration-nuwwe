@@ -14,15 +14,15 @@ class CreateInmuebleDistribucionTable extends Migration
     public function up()
     {
         Schema::create('inmueble_distribucion', function (Blueprint $table) {
-            $table->id();
-            $table->string('seq_inmueble_distribucion', 12)->unique()->nullable();
-            $table->string('cod_tipo_distribucion', 3);
-            $table->string('cod_inmueble', 10);
+            $table->unsignedBigInteger('seq_inmueble_distribucion')->primary();
+            $table->unsignedInteger('seq_tipo_distribucion');
+            $table->unsignedBigInteger('cod_inmueble');
             $table->string('vlr_distribucion', 30)->nullable();
             $table->string('obs_distribucion')->nullable();
-            $table->foreign('cod_tipo_distribucion')->references('cod_tipo_distribucion')->on('tipos_distribuciones');
+            $table->timestamp('fecha_ult_modificacion');
+            $table->foreign('seq_tipo_distribucion')->references('seq_tipo_distribucion')->on('tipos_distribuciones');
             $table->foreign('cod_inmueble')->references('cod_inmueble')->on('inmuebles');
-            $table->unique(['cod_tipo_distribucion', 'cod_inmueble']);
+            $table->unique(['seq_tipo_distribucion', 'cod_inmueble']);
         });
     }
 

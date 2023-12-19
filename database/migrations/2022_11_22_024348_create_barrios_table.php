@@ -14,13 +14,13 @@ class CreateBarriosTable extends Migration
     public function up()
     {
         Schema::create('barrios', function (Blueprint $table) {
-            $table->id();
+            $table->increments('seq_barrio');
             $table->string('cod_barrio', 6)->unique();
             $table->string('nom_barrio', 40);
-            $table->string('cod_ciudad', 6);
-            $table->string('activo', 1)->default('S');
+            $table->unsignedInteger('seq_ciudad');
+            $table->boolean('activo')->default(true);
             $table->index('cod_barrio');
-            $table->foreign('cod_ciudad')->references('cod_ciudad')->on('ciudades');
+            $table->foreign('seq_ciudad')->references('seq_ciudad')->on('ciudades');
         });
     }
 
