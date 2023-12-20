@@ -18,8 +18,7 @@ class CreateBarriosTable extends Migration
             $table->string('cod_barrio', 6)->unique();
             $table->string('nom_barrio', 40);
             $table->unsignedInteger('seq_ciudad');
-            $table->boolean('activo')->default(true);
-            $table->index('cod_barrio');
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->foreign('seq_ciudad')->references('seq_ciudad')->on('ciudades');
         });
     }

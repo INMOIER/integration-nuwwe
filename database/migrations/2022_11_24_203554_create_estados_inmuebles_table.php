@@ -18,9 +18,8 @@ class CreateEstadosInmueblesTable extends Migration
             $table->string('cod_estado', 3)->unique();
             $table->string('nom_estado', 15);
             $table->string('color_estado', 7)->nullable();
-            $table->boolean('activo')->default(true);
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->boolean('visible')->default(true);
-            $table->timestamp('fecha_ult_modificacion');
         });
     }
 

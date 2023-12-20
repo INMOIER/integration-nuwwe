@@ -17,7 +17,7 @@ class CreateTiposInmueblesTable extends Migration
             $table->increments('seq_tipo_inmueble');
             $table->string('cod_tipo_inmueble', 3)->unique();
             $table->string('nom_tipo_inmueble', 20);
-            $table->boolean('activo')->default(true);
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->boolean('visible')->default(false);
             $table->timestamp('fecha_ult_modificacion');
         });

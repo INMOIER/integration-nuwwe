@@ -17,7 +17,7 @@ class CreateNomenclaturasTable extends Migration
             $table->unsignedInteger('seq_nomenclatura')->primary();
             $table->string('nom_nomenclatura', 50);
             $table->string('cod_nomenclatura', 10)->nullable();
-            $table->boolean('activo')->default(true);
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->boolean('visible')->default(false);
             $table->timestamp('fecha_ult_modificacion');
         });

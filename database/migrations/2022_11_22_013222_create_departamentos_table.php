@@ -17,7 +17,6 @@ class CreateDepartamentosTable extends Migration
             $table->increments('seq_departamento');
             $table->string('cod_departamento', 3)->unique();
             $table->string('nom_departamento', 25);
-            $table->index('cod_departamento');
         });
     }
 

@@ -18,8 +18,7 @@ class CreateCiudadesTable extends Migration
             $table->string('cod_ciudad', 6)->unique();
             $table->string('nom_ciudad', 40);
             $table->unsignedInteger('seq_departamento');
-            $table->boolean('activo')->default(true);
-            $table->index('cod_ciudad');
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->foreign('seq_departamento')->references('seq_departamento')->on('departamentos');
         });
     }

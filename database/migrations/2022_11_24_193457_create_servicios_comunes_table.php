@@ -17,7 +17,7 @@ class CreateServiciosComunesTable extends Migration
             $table->increments('seq_servicio_comun');
             $table->string('cod_servicio_comun', 3)->unique();
             $table->string('nom_servicio_comun', 30);
-            $table->boolean('activo')->default(true);
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->unsignedInteger('orden')->nullable();
             $table->string('tipo', 1)->default('C');
             $table->string('rango_inicial', 7)->nullable();

@@ -17,7 +17,7 @@ class CreateDestinosInmueblesTable extends Migration
             $table->increments('seq_destino');
             $table->string('cod_destino', 3)->unique();
             $table->string('nom_destino', 15);
-            $table->boolean('activo')->default(true);
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->boolean('visible')->default(true);
             $table->timestamp('fecha_ult_modificacion');
         });

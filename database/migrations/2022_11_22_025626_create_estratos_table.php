@@ -17,7 +17,7 @@ class CreateEstratosTable extends Migration
             $table->increments('seq_estrato');
             $table->string('cod_estrato', 3)->unique();
             $table->string('nom_estrato', 15);
-            $table->boolean('activo')->default(true);
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->boolean('visible')->default(true);
             $table->timestamp('fecha_ult_modificacion');
         });

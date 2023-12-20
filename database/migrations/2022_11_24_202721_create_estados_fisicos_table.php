@@ -17,7 +17,7 @@ class CreateEstadosFisicosTable extends Migration
             $table->increments('seq_estado_fisico');
             $table->string('cod_estado_fisico', 3)->unique();
             $table->string('nom_estado_fisico', 15);
-            $table->boolean('activo')->default(true);
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->boolean('visible')->default(true);
             $table->timestamp('fecha_ult_modificacion');
         });

@@ -34,7 +34,7 @@ class CreateInmueblesTable extends Migration
             $table->unsignedBigInteger('precio_venta_2022')->nullable();
             $table->timestamp('fecha_ult_modificacion');
 
-            // Campos foráneos
+            // Foreign fields
             $table->unsignedInteger('seq_barrio')->nullable();
             $table->unsignedInteger('seq_ciudad');
             $table->unsignedInteger('seq_destino');
@@ -44,7 +44,7 @@ class CreateInmueblesTable extends Migration
             $table->unsignedInteger('seq_tipo_consignacion')->nullable();
             $table->unsignedInteger('seq_tipo_inmueble');
 
-            // Foráneas
+            // Constraints
             $table->foreign('seq_barrio')->references('seq_barrio')->on('barrios');
             $table->foreign('seq_ciudad')->references('seq_ciudad')->on('ciudades');
             $table->foreign('seq_destino')->references('seq_destino')->on('destinos_inmuebles');

@@ -17,7 +17,7 @@ class CreateTiposDistribucionesTable extends Migration
             $table->increments('seq_tipo_distribucion');
             $table->string('cod_tipo_distribucion', 3)->unique();
             $table->string('nom_tipo_distribucion', 30);
-            $table->boolean('activo')->default(true);
+            $table->addColumn('si_no', 'activo')->default('S');
             $table->unsignedInteger('orden')->nullable();
             $table->string('tipo', 1)->default('C');
             $table->string('rango_inicial', 7)->nullable();
